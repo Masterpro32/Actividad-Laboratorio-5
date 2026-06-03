@@ -51,7 +51,7 @@ def cargar_contactos_txt():
 
     # Devuelve la lista de contactos cargados desde el archivo
     return contactos
-#Jeanpier
+#Jeanpier: definición de funciones para obtener el siguiente ID y registrar contactos
 def obtener_siguiente_id():
     # Carga los contactos existentes
     contactos = cargar_contactos_txt()
