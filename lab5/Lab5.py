@@ -1,3 +1,5 @@
+#Diego: importación de librerías, definición de archivos y función para cargar contactos
+
 # Importamos os para verificar si existen archivos
 import os
 
