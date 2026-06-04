@@ -1,4 +1,4 @@
-#Diego: importación de librerías, definición de archivos y función para cargar contactos
+ #Diego: importación de librerías, definición de archivos y función para cargar contactos
 
 # Importamos os para verificar si existen archivos
 import os
@@ -51,3 +51,44 @@ def cargar_contactos_txt():
 
     # Devuelve la lista de contactos cargados desde el archivo
     return contactos
+    
+    #parte 3  Haziel
+def mostrar_archivo_linea_por_linea():
+    print("\n--- CONTENIDO DEL ARCHIVO DE TEXTO ---")
+
+    # Verifica si el archivo existe antes de leerlo
+    if not os.path.exists(ARCHIVO_TEXTO):
+        print("Todavía no existe el archivo contactos.txt")
+        return
+
+    # Abre el archivo en modo lectura
+    with open(ARCHIVO_TEXTO, "r", encoding="utf-8") as archivo:
+        # Muestra cada línea del archivo
+        for linea in archivo:
+            print(linea.strip())
+
+
+def mostrar_contactos_ordenados():
+    print("\n--- LISTA DE CONTACTOS ---")
+
+    # Carga los contactos desde el archivo de texto
+    contactos = cargar_contactos_txt()
+
+    # Si no hay contactos, muestra un mensaje
+    if len(contactos) == 0:
+        print("No hay contactos registrados.")
+        return
+
+    # Ordena los contactos alfabéticamente por nombre
+    contactos_ordenados = sorted(contactos, key=lambda c: c["nombre"].lower())
+
+    # Imprime los encabezados de la tabla
+    # El formato <5, <25 y <12 ayuda a alinear las columnas
+    print(f"{'ID':<5} {'Nombre':<25} {'Teléfono':<12}")
+    print("-" * 44)
+
+    # Muestra cada contacto en formato de tabla
+    for contacto in contactos_ordenados:
+        print(f"{contacto['id']:<5} {contacto['nombre']:<25} {contacto['telefono']:<12}")
+
+
