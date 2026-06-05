@@ -51,6 +51,8 @@ def cargar_contactos_txt():
 
     # Devuelve la lista de contactos cargados desde el archivo
     return contactos
+
+  
 #Jeanpier: definición de funciones para obtener el siguiente ID y registrar contactos
 def obtener_siguiente_id():
     # Carga los contactos existentes
@@ -148,5 +150,57 @@ def mostrar_contactos_ordenados():
     # Muestra cada contacto en formato de tabla
     for contacto in contactos_ordenados:
         print(f"{contacto['id']:<5} {contacto['nombre']:<25} {contacto['telefono']:<12}")
+        
+        
+#Victoria:
+
+def buscar_contacto():
+    print("\n--- BÚSQUEDA DE CONTACTO ---")
+
+    # Carga los contactos desde el archivo
+    contactos = cargar_contactos_txt()
+
+    # Verifica si existen contactos registrados
+    if len(contactos) == 0:
+        print("No hay contactos registrados.")
+        return
+
+    # Solicita el nombre a buscar
+    # lower() permite buscar sin importar mayúsculas o minúsculas
+    nombre_buscar = input("Ingrese el nombre a buscar: ").strip().lower()
+
+    # Valida que el usuario no deje la búsqueda vacía
+    if nombre_buscar == "":
+        print("Debe ingresar un nombre para buscar.")
+        return
+
+    # Variable para saber si se encontró al menos un contacto
+    encontrado = False
+
+    # Recorre la lista de contactos
+    for contacto in contactos:
+        # Busca coincidencias dentro del nombre del contacto
+        if nombre_buscar in contacto["nombre"].lower():
+            print("\nContacto encontrado:")
+            print(f"ID: {contacto['id']}")
+            print(f"Nombre: {contacto['nombre']}")
+            print(f"Teléfono: {contacto['telefono']}")
+
+            # Cambia a True porque sí encontró un resultado
+            encontrado = True
+
+    # Si no encontró nada, muestra un mensaje
+    if not encontrado:
+        print("No se encontró ningún contacto con ese nombre.")
+
+
+def contar_contactos():
+    # Carga todos los contactos guardados
+    contactos = cargar_contactos_txt()
+
+    print("\n--- CONTEO DE CONTACTOS ---")
+
+    # Muestra la cantidad total de contactos registrados
+    print(f"Cantidad total de contactos registrados: {len(contactos)}")
 
 
