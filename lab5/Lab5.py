@@ -215,6 +215,10 @@ def contar_contactos():
 #Harol: Función de guardar y leer datos binarios además del menú
 def guardar_y_leer_binario():
     print("\n--- ARCHIVO BINARIO ---")
+
+    # Carga los contactos desde el archivo de texto
+    contactos = cargar_contactos_txt()
+
     # Si no hay contactos, no se puede generar el archivo binario
     if len(contactos) == 0:
         print("No hay contactos para guardar en archivo binario.")
